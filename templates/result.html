@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Lookup Result</title>
+    <link rel="stylesheet" href="/statics/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🌍 IP Lookup Result for {{ ip }}</h1>
+
+    {% if result.error %}
+        <p class="error">{{ result.error }}</p>
+    {% else %}
+        <ul class="result-box">
+            <li><strong>IP Address:</strong> {{ result.ip }}</li>
+            <li><strong>City:</strong> {{ result.city }}</li>
+            <li><strong>Region:</strong> {{ result.region }}</li>
+            <li><strong>Country:</strong> {{ result.country }}</li>
+            <li><strong>Latitude:</strong> {{ result.latitude }}</li>
+            <li><strong>Longitude:</strong> {{ result.longitude }}</li>
+            <li><strong>Timezone:</strong> {{ result.timezone }}</li>
+            <li><strong>Organization:</strong> {{ result.org }}</li>
+        </ul>
+    {% endif %}
+
+    <a href="/" class="back-btn">Go Back</a>
+</div>
+
+</body>
+</html>
