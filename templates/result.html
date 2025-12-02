@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP Lookup Result</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-<div class="container">
-    <h1>🌍 IP Lookup Result for {{ ip }}</h1>
-
-    {% if result.error %}
-        <p class="error">{{ result.error }}</p>
-    {% else %}
-        <ul class="result-box">
-            <li><strong>IP Address:</strong> {{ result.ip }}</li>
-            <li><strong>City:</strong> {{ result.city }}</li>
-            <li><strong>Region:</strong> {{ result.region }}</li>
-            <li><strong>Country:</strong> {{ result.country }}</li>
-            <li><strong>Latitude:</strong> {{ result.latitude }}</li>
-            <li><strong>Longitude:</strong> {{ result.longitude }}</li>
-            <li><strong>Timezone:</strong> {{ result.timezone }}</li>
-            <li><strong>Organization:</strong> {{ result.org }}</li>
-        </ul>
-    {% endif %}
-
-    <a href="/" class="back-btn">Go Back</a>
-</div>
-
+    <div class="container">
+        <div class="result-card">
+            <div class="globe-icon">🌍</div>
+            <h1>IP Lookup Result for {{ ip }}</h1>
+            
+            {% if result %}
+                <div class="result-info">
+                    <ul>
+                        <li><strong>IP Address:</strong> {{ result.ip }}</li>
+                        <li><strong>City:</strong> {{ result.city }}</li>
+                        <li><strong>Region:</strong> {{ result.region }}</li>
+                        <li><strong>Country:</strong> {{ result.country }}</li>
+                        <li><strong>Latitude:</strong> {{ result.lat }}</li>
+                        <li><strong>Longitude:</strong> {{ result.lon }}</li>
+                        <li><strong>Timezone:</strong> {{ result.timezone }}</li>
+                        <li><strong>Organization:</strong> {{ result.isp }}</li>
+                    </ul>
+                </div>
+            {% else %}
+                <p class="error-message">Invalid IP address or lookup failed</p>
+            {% endif %}
+            
+            <a href="/" class="btn-back">Go Back</a>
+        </div>
+    </div>
 </body>
 </html>
